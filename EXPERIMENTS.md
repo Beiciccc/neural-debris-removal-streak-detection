@@ -18,13 +18,16 @@ This file records public-score experiments for the Kaggle competition. Scores ar
 | 11 | `sub11_zaoui_public_scale105_keep020.csv` | `249.7103` | Same detection set with confidence scale `1.05`. |
 | 12 | `sub12_zaoui_public_scale106_keep020.csv` | `249.6699` | Same detection set with confidence scale `1.06`. |
 | 13 | `sub13_zaoui_public_scale107_keep020.csv` | `249.6356` | Same detection set with confidence scale `1.07`. |
+| 14 | `sub14_zaoui_public_scale108_keep020.csv` | `249.6019` | Same detection set with confidence scale `1.08`. |
+| 15 | `sub15_zaoui_public_scale109_keep020.csv` | `249.5749` | Same detection set with confidence scale `1.09`. |
 
 ## Observations
 
 - Initial empty-label fine-tuning improved after confidence calibration and low-score filtering.
 - The later public pruning/EWC candidate gave a much stronger base prediction set.
-- Repeated calibration of the same detection set from `1.02` through `1.07` improved public score monotonically, but the marginal gain became smaller at each step.
+- Repeated calibration of the same detection set from `1.02` through `1.09` improved public score monotonically, but the marginal gain became smaller at each step.
 - Sparse drop-threshold candidates were kept as reference files, but were not prioritized once the fixed detection set with confidence scaling became the best-performing family.
+- Empty predictions must be serialized as a single-space field to avoid null values in Kaggle submission parsing.
 
 ## Included Metadata
 

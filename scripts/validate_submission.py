@@ -21,6 +21,13 @@ def main() -> int:
     parser.add_argument("--sample", default="data/sample_submission.csv")
     args = parser.parse_args()
 
+    kaggle_submission = pd.read_csv(args.submission)
+    null_rows = kaggle_submission["prediction_string"].isna()
+    if null_rows.any():
+        first_rows = null_rows[null_rows].index[:5].tolist()
+        print(f"prediction_string contains Kaggle-null empty fields at rows {first_rows}")
+        return 1
+
     submission = pd.read_csv(args.submission, keep_default_na=False)
     sample = pd.read_csv(args.sample, keep_default_na=False)
 
