@@ -20,7 +20,7 @@ Raw competition images and model weights are not included. Download the official
 
 | File | Public score |
 | --- | ---: |
-| `submissions/sub15_zaoui_public_scale109_keep020.csv` | `249.5749` |
+| `submissions/sub17_zaoui_public_scale111_keep020.csv` | `249.5404` |
 
 Lower score is better for this competition metric.
 
@@ -36,7 +36,7 @@ python3 scripts/postprocess_submission.py \
 Validate a submission file:
 
 ```bash
-python3 scripts/validate_submission.py submissions/sub15_zaoui_public_scale109_keep020.csv
+python3 scripts/validate_submission.py submissions/sub17_zaoui_public_scale111_keep020.csv
 ```
 
 The validator expects the official `data/sample_submission.csv` file to exist locally unless a custom `--sample` path is supplied.
