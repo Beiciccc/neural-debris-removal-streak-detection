@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Run RetinaNet de-poisoning experiments for the Neural Debris competition.
 
-This script is intended to run on the GPU server. It adapts the public Kaggle
-baseline notebooks into one parameterized entrypoint so experiments are
+This script is intended to run in a GPU-capable Python environment. It adapts
+the public Kaggle baseline notebooks into one parameterized entrypoint so experiments are
 repeatable and auditable.
 """
 
