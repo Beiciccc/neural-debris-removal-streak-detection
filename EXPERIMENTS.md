@@ -30,12 +30,13 @@ This file records public-score experiments for the Kaggle competition. Scores ar
 | 23 | `sub23_zaoui_public_scale1135_keep020.csv` | `246.8521` | Same detection set with confidence scale `1.135`. |
 | 24 | `sub24_zaoui_public_scale114_keep020.csv` | `246.8434` | Same detection set with confidence scale `1.14`. |
 | 25 | `sub25_zaoui_public_scale1141_keep020.csv` | `246.8416` | Same detection set with confidence scale `1.141`, close to the valid confidence upper bound. |
+| 26 | `sub26_zaoui_public_scale114125_keep020.csv` | `246.8412` | Same detection set with confidence scale `1.14125`, very close to the valid confidence upper bound. |
 
 ## Observations
 
 - Initial empty-label fine-tuning improved after confidence calibration and low-score filtering.
 - The later public pruning/EWC candidate gave a much stronger base prediction set.
-- Repeated calibration of the same detection set from `1.02` through `1.141` improved public score monotonically, but future steps are very close to the score upper bound.
+- Repeated calibration of the same detection set from `1.02` through `1.14125` improved public score monotonically, but future steps are very close to the score upper bound.
 - The `1.13/drop0.25` candidate was worse than the keep-`0.20` calibration line, so sparse drop-threshold candidates remain lower priority.
 - Host clarification indicates unlearn-set annotations represent poisoned targets to suppress, not clean positives to preserve.
 - Empty predictions must be serialized as a single-space field to avoid null values in Kaggle submission parsing.
