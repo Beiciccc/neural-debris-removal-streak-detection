@@ -23,6 +23,7 @@ def main() -> int:
     parser.add_argument("--sample", type=Path, default=Path("data/sample_submission.csv"))
     parser.add_argument("--conf-scale", type=float, default=1.0)
     parser.add_argument("--drop-threshold", type=float, default=None)
+    parser.add_argument("--clip-max", type=float, default=None)
     parser.add_argument("--stats", action="store_true")
     args = parser.parse_args()
 
@@ -38,6 +39,7 @@ def main() -> int:
     rows = []
     scores = []
     dropped = 0
+    clipped = 0
     for _, row in source.iterrows():
         parts = []
         for score, x, y, w, h in parse_prediction_string(row["prediction_string"]):
@@ -45,6 +47,9 @@ def main() -> int:
             if args.drop_threshold is not None and scaled_score <= args.drop_threshold:
                 dropped += 1
                 continue
+            if args.clip_max is not None and scaled_score > args.clip_max:
+                scaled_score = args.clip_max
+                clipped += 1
             parts.extend(
                 [
                     f"{scaled_score:.6f}",
@@ -70,7 +75,7 @@ def main() -> int:
     if args.stats:
         empty = int((out["prediction_string"].str.strip() == "").sum())
         print(f"wrote {args.output}")
-        print(f"rows={len(out)} empty={empty} boxes={len(scores)} dropped={dropped}")
+        print(f"rows={len(out)} empty={empty} boxes={len(scores)} dropped={dropped} clipped={clipped}")
         if scores:
             print(f"mean_conf={np.mean(scores):.6f} min_conf={np.min(scores):.6f}")
     return 0

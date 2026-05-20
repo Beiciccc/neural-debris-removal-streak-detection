@@ -20,7 +20,7 @@ Raw competition images and model weights are not included. Download the official
 
 | File | Public score |
 | --- | ---: |
-| `submissions/sub26_zaoui_public_scale114125_keep020.csv` | `246.8412` |
+| `submissions/sub27_zaoui_public_scale11414_keep020.csv` | `246.8409` |
 
 Lower score is better for this competition metric.
 Kaggle adjusted the metric to asymmetric maCADD in May 2026, so public scores in this archive use the recomputed leaderboard values.
@@ -37,7 +37,7 @@ python3 scripts/postprocess_submission.py \
 Validate a submission file:
 
 ```bash
-python3 scripts/validate_submission.py submissions/sub26_zaoui_public_scale114125_keep020.csv
+python3 scripts/validate_submission.py submissions/sub27_zaoui_public_scale11414_keep020.csv
 ```
 
 The validator expects the official `data/sample_submission.csv` file to exist locally unless a custom `--sample` path is supplied.
